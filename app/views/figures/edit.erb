@@ -1,0 +1,37 @@
+<h1>Edit</h1>
+
+<form action='/figures/<%= @figure.id %>' method='POST'>
+	<label for="figure_name">Name: </label>
+	<input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
+
+	<br></br>
+
+	<label for="title">Title: </label>
+	<% Title.all.each do |title| %>
+		<input type="checkbox" name="figure[title_ids][]" id="title_<%= title.id %>" value="<%= title.id %>"><%= title.name %>
+	<% end %>
+	<br></br>
+
+	<label for="landmarks">Landmarks: </label>
+	<% Landmark.all.each do |landmark| %>
+		<input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>"><%= landmark.name %>
+	<% end %>
+
+	<br></br>
+
+	or enter a new Landmark and Title:
+
+	<br></br>
+
+	<label for="landmark name">Landmark Name: </label>
+	<input type="text" name="landmark[name]" id="new_landmark">
+
+	<br></br>
+
+	<label for="title name">Title Name: </label>
+	<input type="text" name="title[name]" id="new_title">
+
+	<input type="submit" name="Create" id="Edit Figure">
+
+
+</form>
